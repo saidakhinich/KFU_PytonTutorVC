@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="key-overlay" id="key-overlay">
+        <div class="key-modal">
+            <h2>Добро пожаловать в Python Tutor!</h2>
+            <p>Введи свой <strong>OpenRouter API ключ</strong> для начала работы.<br>Ключ хранится только в этой сессии (до закрытия страницы).</p>
+            <div class="key-modal-input">
+                <input type="password" id="key-prompt-input" placeholder="sk-or-v1-...">
+                <button class="btn btn-primary" id="key-save-btn">Начать</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app">
+        <header>
+            <h1>Python Tutor</h1>
+            <p>Решай задачи, получай обратную связь от нейросети</p>
+        </header>
+
+        <div class="task-progress" id="task-progress"></div>
+
+        <div class="action-bar">
+            <div class="action-bar-left">
+                <div class="clippy" id="clippy">
+                    <div class="clippy-bubble" id="clippy-bubble">
+                        <span id="clippy-text">Привет! Я помогу тебе с задачами!</span>
+                        <button class="clippy-close" id="clippy-close">&times;</button>
+                        <div class="clippy-arrow"></div>
+                    </div>
+                    <div class="clippy-body" id="clippy-body">
+                        <div class="clippy-eye clippy-eye-left"></div>
+                        <div class="clippy-eye clippy-eye-right"></div>
+                        <div class="clippy-mouth"></div>
+                        <div class="clippy-wire" id="clippy-wire"></div>
+                    </div>
+                </div>
+                <span class="action-label">Скриппи говорит:</span>
+            </div>
+            <div class="action-bar-right">
+                <div class="action-btn-group">
+                    <button class="btn btn-primary" id="submit-btn" onclick="App.submit()">Проверить</button>
+                    <button class="btn btn-secondary" id="hint-btn" onclick="App.showHint()">Подсказка</button>
+                    <button class="btn btn-secondary" id="reset-btn" onclick="App.reset()">&#8635; Сбросить</button>
+                </div>
+                <div class="action-btn-group">
+                    <button class="btn btn-secondary btn-sm" id="prev-btn" onclick="App.prevTask()">&#8592; Назад</button>
+                    <button class="btn btn-secondary btn-sm" id="next-btn" onclick="App.nextTask()">Вперёд &#8594;</button>
+                </div>
+                <span class="sound-toggle" id="sound-toggle">&#128266;</span>
+                <span class="settings-link" id="settings-toggle">&#9881;</span>
+            </div>
+        </div>
+
+        <div id="settings-panel">
+            <div class="settings-row">
+                <div class="settings-field">
+                    <label>OpenRouter API Key</label>
+                    <input type="password" id="api-key-input" placeholder="sk-or-...">
+                </div>
+                <div class="settings-field">
+                    <label>Модель</label>
+                    <input type="text" id="model-input" placeholder="openai/gpt-oss-120b:free">
+                </div>
+                <button class="btn btn-primary" id="save-settings-btn">Сохранить</button>
+            </div>
+        </div>
+
+        <div class="editor-area">
+            <div class="task-card" id="task-card"></div>
+            <textarea id="code-input" spellcheck="false"></textarea>
+        </div>
+
+        <div class="hint-card" id="hint-block"></div>
+
+        <div class="result-card" id="result-card"></div>
+
+        <div class="api-key-note">Ключ хранится только в текущей сессии (до закрытия страницы)</div>
+    </div>
+
+    <script src="ai.js"></script>
+    <script src="tasks.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
