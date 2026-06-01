@@ -123,14 +123,14 @@ const App = {
         const task = Tasks[this.currentTaskIndex];
         if (!task.hint) return;
 
+        const items = task.hint.research.map(q => `<li>${q}</li>`).join('');
+
         const block = document.getElementById('hint-block');
         block.innerHTML = `
-            <div class="hint-content">
-                <div class="hint-theory">${task.hint.theory}</div>
-                <div class="hint-code">
-                    <span class="label">Пример:</span>
-                    <pre>${task.hint.code}</pre>
-                </div>
+            <div class="hint-theory">${task.hint.theory}</div>
+            <div class="hint-research">
+                <span class="label">На что обратить внимание:</span>
+                <ul>${items}</ul>
             </div>
         `;
         block.classList.add('visible');
